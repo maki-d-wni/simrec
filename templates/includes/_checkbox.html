@@ -1,0 +1,49 @@
+{% for key in params %}
+{% if 'surface' in key %}
+<div class="p-2 my-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">{{ key }}</h6>
+    <div class="text-muted my-3 pb-3 mb-0 small lh-125 border-bottom">
+        {% for l in level.surface %}
+        {% for p_surface in params.surface %}
+        <input type="checkbox" name="check_surface" autocomplete="off" value="{{ p_surface }}_{{ l }}"
+               id="{{ p_surface }}_{{ l }}" checked>
+        <label for="{{ p_surface }}_{{ l }}"><font size="2">{{ p_surface }}</font></label>
+        {% if loop.index0 == 5 %}
+        <br>
+        {% endif %}
+        {% endfor %}
+        {% endfor %}
+    </div>
+</div>
+{% elif 'upper' in key %}
+<div class="p-2 my-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">{{ key }}</h6>
+    <div class="text-muted my-3">
+        <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+            {% for l in level.upper|sort(reverse=True) %}
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <strong class="text-gray-dark">{{ l }} hPa</strong>
+            </div>
+            {% for p_upper in params.upper %}
+            {% if (
+            p_upper in 'Temperature' or p_upper in 'u-component of wind' or p_upper in 'v-component of wind'
+            ) and (
+            (l == 850) or (l==700) or (l==500)
+            ) %}
+            <input type="checkbox" name="check_upper" autocomplete="off" value="{{ p_upper }}_{{ l }}"
+                   id="{{ p_upper }}_{{ l }}_checked" checked>
+            <label for="{{ p_upper }}_{{ l }}_checked"><font size="2">{{ p_upper }}</font></label>
+            {% else %}
+            <input type="checkbox" name="check_upper" autocomplete="off" value="{{ p_upper }}_{{ l }}"
+                   id="{{ p_upper }}_{{ l }}">
+            <label for="{{ p_upper }}_{{ l }}"><font size="2">{{ p_upper }}</font></label>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+
