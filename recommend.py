@@ -110,52 +110,56 @@ def main():
     bt = '03'
     vt = '00'
 
-    if int(vt) <= 15:
-        vt_dir = 'vt0015'
-    elif (15 < int(vt)) and (int(vt) <= 33):
-        vt_dir = 'vt1633'
-    else:
-        vt_dir = None
 
-    cutoff = 5
-    tmp_file = make_tmp_filename(cutoff, params, level, 'pkl')
-    tmp_file = WEB_PATH + '/tmp/similar_date/%s/%s' % (date, tmp_file)
 
-    if os.path.exists(tmp_file):
-        hist = read_similar_date(tmp_file)
-        save_path = WEB_PATH + '/templates/similar_date/%s.html' % date
-        make_similar_date_histogram(hist, save_path)
+    run = False
+    if run:
+        if int(vt) <= 15:
+            vt_dir = 'vt0015'
+        elif (15 < int(vt)) and (int(vt) <= 33):
+            vt_dir = 'vt1633'
+        else:
+            vt_dir = None
 
-    else:
-        os.makedirs(WEB_PATH + '/tmp/similar_date/%s' % date, exist_ok=True)
+        cutoff = 5
+        tmp_file = make_tmp_filename(cutoff, params, level, 'pkl')
+        tmp_file = WEB_PATH + '/tmp/similar_date/%s/%s' % (date, tmp_file)
 
-        hist = {}
-        for layer in ['surface', 'upper']:
-            params = MSMDB.params[layer][:1]
-            level = MSMDB.level[layer][:2]
+        if os.path.exists(tmp_file):
+            hist = read_similar_date(tmp_file)
+            save_path = WEB_PATH + '/templates/similar_date/%s.html' % date
+            make_similar_date_histogram(hist, save_path)
 
-            f = glob.glob(
-                '/home/ai-corner/part1/MSM/%s/bt%s/%s/%s*' % (layer, bt, vt_dir, date)
-            )[0]
+        else:
+            os.makedirs(WEB_PATH + '/tmp/similar_date/%s' % date, exist_ok=True)
 
-            grbs = pygrib.open(f)
+            hist = {}
+            for layer in ['surface', 'upper']:
+                params = MSMDB.params[layer][:1]
+                level = MSMDB.level[layer][:2]
 
-            hist_layer = extract_similar_date(
-                cutoff=5,
-                grbs=grbs,
-                ft=ft,
-                collection=layer,
-                params=params,
-                level=level,
-                save_path=tmp_file
-            )
+                f = glob.glob(
+                    '/home/ai-corner/part1/MSM/%s/bt%s/%s/%s*' % (layer, bt, vt_dir, date)
+                )[0]
 
-            for key in hist_layer:
-                hist[key] = hist_layer[key]
-        print(hist)
+                grbs = pygrib.open(f)
 
-        save_path = WEB_PATH + '/templates/similar_date/%s.html' % date
-        make_similar_date_histogram(hist, save_path)
+                hist_layer = extract_similar_date(
+                    cutoff=5,
+                    grbs=grbs,
+                    ft=ft,
+                    collection=layer,
+                    params=params,
+                    level=level,
+                    save_path=tmp_file
+                )
+
+                for key in hist_layer:
+                    hist[key] = hist_layer[key]
+            print(hist)
+
+            save_path = WEB_PATH + '/templates/similar_date/%s.html' % date
+            make_similar_date_histogram(hist, save_path)
 
 
 if __name__ == '__main__':
