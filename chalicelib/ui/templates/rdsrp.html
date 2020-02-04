@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<body onLoad="chart()" bgcolor=#ffffff>
+<center>
+    <div id="header">
+        <span class="title">- RD SRPdata -</span>
+        <table>
+            <tr>
+                <td>
+                </td>
+                <td>
+                </td>
+                <td>
+                <td width=60>
+                    <form action="http://er3.wni.co.jp/amoeba/datas/hind_RD/rd_srp.cgi" method=GET>
+
+                        <select id="filter1" name="p" style="text-align:center;width:150px">
+                            <option value="00" selected>全支社</option>
+                            <option value="14">Nx北海道</option>
+                            <option value="15">Nx東北</option>
+                            <option value="23">Nx関東</option>
+                            <option value="25">Nx東京</option>
+                            <option value="24">Nx八王子</option>
+                            <option value="22">Nx新潟</option>
+                            <option value="26">Nx金沢</option>
+                            <option value="27">Nx名古屋</option>
+                            <option value="18">Nx関西</option>
+                            <option value="19">Nx中国</option>
+                            <option value="20">Nx四国</option>
+                            <option value="21">Nx九州</option>
+                            <option value="51">本四</option>
+                            <option value="42">新関空</option>
+                            <option value="31">京都府道路公社</option>
+                            <option value="32">宮城県道路公社</option>
+                            <option value="34">奈良県道路公社</option>
+                            <option value="36">千葉県道路公社</option>
+                            <option value="37">茨城県道路公社</option>
+                            <option value="45">首都高速</option>
+                            <option value="30">名古屋高速</option>
+                            <option value="52">弘前市</option>
+                            <option value="70">青森市</option>
+                            <option value="33">山形市</option>
+                            <option value="71">舞鶴市</option>
+                        </select>
+                        <select name="ap" style="text-align:center;width:90px">
+                            <option value="">日中+夜間</option>
+                            <option value="a">日中</option>
+                            <option value="p">夜間</option>
+                        </select>
+                        <input type="date" name="sdate" size="12" value="2018-12-04"> -
+                        <input type="date" name="edate" size="12" value="2018-12-05">
+                        <input type=hidden name=usr value=>
+
+                        <button type=submit class="button_w_static">Show</button>
+                    </form>
+
+                <td width=90>
+                </td>
+                <td>
+                </td>
+                <td>
+                    <a href=http://er3.wni.co.jp/amoeba/datas/hind_RD/rd_srp_prototype.cgi?p=0&ap=&sdate=2018-12-04&edate=2018-12-05&idate=2018-12-04&usr=>評価履歴一覧へ</a>
+                </td>
+                <td width=45></td>
+                <td><a href=http://er3.wni.co.jp/amoeba/datas/hind_RD/rd_srp_ishikawa.cgi?>石川県チェックツールへ</a></td>
+                <td width=45></td>
+                <td>
+                    <a href=http://er3.wni.co.jp/amoeba/datas/hind_RD/rd_srp.cgi?mode=0&p=0&ap=&sdate=2018-12-04&edate=2018-12-05&idate=2018-12-04&usr=&csv=on
+                       download="download.csv">CSV</a>　　
+                </td>
+            </tr>
+        </table>
+    </div>
+    <DIV STYLE="position:absolute;top:70px;left:20px;">
+        <FORM METHOD="POST" NAME="menu_1"><SELECT NAME="menu_1" onChange="JumpToURL(this.form)">
+            <OPTION VALUE=http://er3.wni.co.jp/amoeba/datas/hind_RD/rd_srp.cgi?sdate=2018-12-04&edate=2018-12-05&p=0&sel1=&ap=&sel2=&usr=>
+                全事務所
+        </select></form>
+        <table class="listB"></tr></tr></table>
+    </DIV>
+</body>
+
+{% endblock %}

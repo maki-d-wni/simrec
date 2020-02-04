@@ -1,0 +1,18 @@
+<div>
+    {% for key in pres_msm_img %}
+    <figure>
+        <img src="data:image/png:base64,{{ pres_msm_img[key] }}" width="420" height="280">
+        <figcaption>
+            <div class="sitemap">
+                <ul>
+                    <li>{{ search_date }}
+                        <ul>
+                            <li><a href="/msm?date={{ search_date }}&ft={{ ft }}" target="_blank">MSM</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </figcaption>
+    </figure>
+    {% endfor %}
+</div>

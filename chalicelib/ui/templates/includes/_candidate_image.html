@@ -1,0 +1,32 @@
+<div>
+    {% for date in cnd_date_img_urls %}{% set date_loop = loop %}
+    {% for rdsrp_url in rdsrp_urls %}{% if loop.index==date_loop.index %}
+    <figure class="candidate-image">
+        <img src=" {{ cnd_date_img_urls[date] }}" width="300" height="200" vspace="10" hspace="10">
+        <figcaption>
+            <div class="sitemap">
+                <ul>
+                    <li>{{ date }}
+                        <ul>
+                            <li><a href="{{ rdsrp_url }}" target="_blank">SRP</a></li>
+                            <li><a href="/msm?date={{ date }}&ft={{ 0 }}" target="_blank">MSM</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </figcaption>
+    </figure>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</div>
+
+<!--
+<div>
+    {% for date in cnd_date_img_urls %}{% set date_loop = loop %}
+    <figure class="candidate-image">
+        <img src=" {{ cnd_date_img_urls[date] }}" width="300" height="200" vspace="10" hspace="10">
+    </figure>
+    {% endfor %}
+</div>
+-->

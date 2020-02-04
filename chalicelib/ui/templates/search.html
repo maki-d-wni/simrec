@@ -1,0 +1,32 @@
+<form method="post">
+    <div class="container-fluid">
+        {% include 'includes/_button.html' %}
+        {% include 'includes/_checkbox.html' %}
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="search-title">
+                    Search Results
+                </h4>
+                <div class="search-image">
+                    {% include '/includes/_search_image.html' %}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <h4 class="similarity-histogram-title">Similarity Histogram</h4>
+                <div class="similarity-histogram">
+                    {% if similar_date_url %}
+                    <iframe src="{{ similar_date_url }}" width="960" height="480"></iframe>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4 class="candidate-title">Similar Date & RD SRP</h4>
+                <div class="candidate-contents">
+                    {% include '/includes/_candidate_image.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

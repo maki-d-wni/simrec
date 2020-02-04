@@ -1,0 +1,92 @@
+{% for key in params %}
+{% if 'surface' in key %}
+<div class="checkbox-block" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header" role="tab" id="headingOne">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                   aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    {{ key }}
+                </a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+            <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne"
+                 aria-expanded="false" style="">
+                <div class="card-block checkbox-surface">
+                    <div class="text-muted small checkbox-surface">
+                        {% for p_surface in params.surface %}
+                        {% if p_surface in 'Relative humidity' or p_surface in 'Temperature' %}
+                        <input type="checkbox" name="check_surface" autocomplete="off"
+                               value="{{ p_surface }}_2"
+                               id="{{ p_surface }}_surface_1" checked>
+                        <label for="{{ p_surface }}_surface_1"><font size="2">{{ p_surface }}</font></label>
+                        {% elif p_surface in 'u-component of wind' or p_surface in 'v-component of wind' %}
+                        <input type="checkbox" name="check_surface" autocomplete="off"
+                               value="{{ p_surface }}_10"
+                               id="{{ p_surface }}_surface_2" checked>
+                        <label for="{{ p_surface }}_surface_2"><font size="2">{{ p_surface }}</font></label>
+                        {% elif p_surface in 'Downward short-wave radiation flux' %}
+                        <input type="checkbox" name="check_surface" autocomplete="off"
+                               value="{{ p_surface }}_surface"
+                               id="{{ p_surface }}_surface_3">
+                        <label for="{{ p_surface }}_surface_3"><font size="2">{{ p_surface }}</font></label>
+                        {% else %}
+                        <input type="checkbox" name="check_surface" autocomplete="off"
+                               value="{{ p_surface }}_0"
+                               id="{{ p_surface }}_surface_4" checked>
+                        <label for="{{ p_surface }}_surface_4"><font size="2">{{ p_surface }}</font></label>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% elif 'upper' in key %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card-header" role="tab" id="headingTwo">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                   aria-expanded="false" aria-controls="collapseOne" class="collapsed">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    {{ key }}
+                </a>
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </div>
+            <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo"
+                 aria-expanded="false">
+                <div class="card-block checkbox-upper">
+                    <div class="text-muted small">
+                        {% for l in level.upper|sort(reverse=True) %}
+                        {% if l>=300 %}
+                        <div>
+                            <strong class="text-gray-dark">{{ l }} hPa</strong>
+                        </div>
+                        {% for p_upper in params.upper %}
+                        {% if (
+                        p_upper in 'Temperature' or p_upper in 'u-component of wind' or p_upper in 'v-component of wind'
+                        ) and (
+                        (l==850) or (l==700) or (l==500)
+                        ) %}
+                        <input type="checkbox" name="check_upper" autocomplete="off"
+                               value="{{ p_upper }}_{{ l }}"
+                               id="{{ p_upper }}_{{ l }}_checked" checked>
+                        <label for="{{ p_upper }}_{{ l }}_checked"><font size="2">{{ p_upper }}</font></label>
+                        {% else %}
+                        <input type="checkbox" name="check_upper" autocomplete="off"
+                               value="{{ p_upper }}_{{ l }}"
+                               id="{{ p_upper }}_{{ l }}">
+                        <label for="{{ p_upper }}_{{ l }}"><font size="2">{{ p_upper }}</font></label>
+                        {% endif %}
+                        {% endfor %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endfor %}

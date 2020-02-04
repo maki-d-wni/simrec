@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<div class="row">
+    {% for key in pres_msm_img %}
+    <img src="data:image/png:base64,{{ pres_msm_img[key] }}" width="344" height="280">
+    {% endfor %}
+    {% for key in prec_msm_img %}
+    <img src="data:image/png:base64,{{ prec_msm_img[key] }}" width="350" height="280">
+    {% endfor %}
+</div>
+<div class="row">
+    {% for key in temp_msm_img %}
+    <div class="col-md-3">
+        <img src="data:image/png:base64,{{ temp_msm_img[key] }}" width="320" height="280">
+    </div>
+    {% endfor %}
+</div>
+<div class="row">
+    {% for key in wind_msm_img %}
+    <img src="data:image/png:base64,{{ wind_msm_img[key] }}" width="344" height="280">
+    {% endfor %}
+</div>
+
+{% endblock %}

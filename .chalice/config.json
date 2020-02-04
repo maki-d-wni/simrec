@@ -1,0 +1,11 @@
+{
+  "version": "2.0",
+  "app_name": "simrec",
+  "stages": {
+    "dev": {
+      "lambda_memory_size": 256,
+      "api_gateway_stage": "api",
+      "api_gateway_endpoint_type": "REGIONAL"
+    }
+  }
+}

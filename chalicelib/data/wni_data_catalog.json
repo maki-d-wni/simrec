@@ -1,0 +1,122 @@
+{
+  "400220000": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "00",
+    "validity time": "0015"
+  },
+  "400220001": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "03",
+    "validity time": "0015"
+  },
+  "400220002": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "06",
+    "validity time": "0015"
+  },
+  "400220003": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "09",
+    "validity time": "0015"
+  },
+  "400220004": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "12",
+    "validity time": "0015"
+  },
+  "400220005": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "15",
+    "validity time": "0015"
+  },
+  "400220006": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "18",
+    "validity time": "0015"
+  },
+  "400220007": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "21",
+    "validity time": "0015"
+  },
+  "400220008": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "00",
+    "validity time": "0015"
+  },
+  "400220009": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "03",
+    "validity time": "0015"
+  },
+  "400220010": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "06",
+    "validity time": "0015"
+  },
+  "400220011": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "09",
+    "validity time": "0015"
+  },
+  "400220012": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "12",
+    "validity time": "0015"
+  },
+  "400220013": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "15",
+    "validity time": "0015"
+  },
+  "400220014": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "18",
+    "validity time": "0015"
+  },
+  "400220015": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "21",
+    "validity time": "0015"
+  },
+  "400220115": {
+    "nwp": "MSM",
+    "layer": "surface",
+    "base time": "03",
+    "validity time": "1633"
+  },
+  "400220123": {
+    "nwp": "MSM",
+    "layer": "upper",
+    "base time": "03",
+    "validity time": "1633"
+  },
+  "400220143": {
+    "nwp": "GSM",
+    "layer": "surface",
+    "base time": "12",
+    "validity time": "0084"
+  },
+  "400220148": {
+    "nwp": "GSM",
+    "layer": "upper",
+    "base time": "12",
+    "validity time": "0084"
+  }
+}
